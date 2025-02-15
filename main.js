@@ -1,46 +1,39 @@
-document.querySelector(".human-left").addEventListener("click", afterLeftClick);
-document.querySelector(".human-right").addEventListener("click", afterRightClick);
+document.querySelector(".human-left").addEventListener("click", () => changeHand(leftHand));
+document.querySelector(".human-right").addEventListener("click", () => changeHand(rightHand));
 document.querySelector(".setter").addEventListener("click", afterSet);
-document.querySelector(".play-left").addEventListener("click", sendLeft);
-document.querySelector(".play-right").addEventListener("click", sendRight);
+document.querySelector(".play-left").addEventListener("click", () => playHand(leftHand));
+document.querySelector(".play-right").addEventListener("click", () => playHand(rightHand));
+document.querySelector(".resetter").addEventListener("click", resetGame);
 
 const leftHand = document.querySelector(".human-left");
 const rightHand = document.querySelector(".human-right");
 const setBtn = document.querySelector(".setter");
 const pcLeft = document.querySelector(".computer-left");
 const pcRight = document.querySelector(".computer-right");
+const playLeftUtil = document.querySelector(".play-left");
+const playRightUtil = document.querySelector(".play-right");
+const resetBtn = document.querySelector(".resetter");
+var humanHand;
+var computerHand;
 
-function afterLeftClick() {
-    var choice = window.getComputedStyle(leftHand).backgroundImage; //apply tagged item
+function changeHand(hand) {
+    var choice = window.getComputedStyle(hand).backgroundImage; 
 
     /* getComputedStyle() returns ACTUAL VALUE of defined CSS property */
 
     if (choice.includes("rock.png")) {
-        leftHand.style.backgroundImage = 'url("./assets/paper.png")';
+        hand.style.backgroundImage = 'url("./assets/paper.png")';
     } else if (choice.includes("paper.png")) {
-        leftHand.style.backgroundImage = 'url("./assets/scissors.png")';
+        hand.style.backgroundImage = 'url("./assets/scissors.png")';
     } else {
-        leftHand.style.backgroundImage = 'url("./assets/rock.png")';
-    }
-}
-
-function afterRightClick() {
-    var choice = window.getComputedStyle(rightHand).backgroundImage; 
-
-    if (choice.includes("rock.png")) {
-        rightHand.style.backgroundImage = 'url("./assets/paper.png")';
-    } else if (choice.includes("paper.png")) {
-        rightHand.style.backgroundImage = 'url("./assets/scissors.png")';
-    } else {
-        rightHand.style.backgroundImage = 'url("./assets/rock.png")';
+        hand.style.backgroundImage = 'url("./assets/rock.png")';
     }
 }
 
 function afterSet() {
     setBtn.disabled = true;
-    document.querySelector(".play-left").disabled = false;
-    document.querySelector(".play-right").disabled = false;
-    document.querySelector(".stage-prompt").innerHTML = "MINUS ONE!";
+    playLeftUtil.disabled = false;
+    playRightUtil.disabled = false;
 
     var randomRollLeft = Math.floor(Math.random() * 3); 
     var randomRollRight = Math.floor(Math.random() * 3); 
@@ -50,42 +43,101 @@ function afterSet() {
         case 1: pcLeft.style.backgroundImage='url("./assets/paper.png")'; break;
         case 2: pcLeft.style.backgroundImage='url("./assets/scissors.png")'; break;
     }
+    
     switch (randomRollRight) {
-        case 0: pcLeft.style.backgroundImage='url("./assets/rock.png")'; break;
-        case 1: pcLeft.style.backgroundImage='url("./assets/paper.png")'; break;
-        case 2: pcLeft.style.backgroundImage='url("./assets/scissors.png")';  break;
+        case 0: pcRight.style.backgroundImage='url("./assets/rock.png")'; break;
+        case 1: pcRight.style.backgroundImage='url("./assets/paper.png")'; break;
+        case 2: pcRight.style.backgroundImage='url("./assets/scissors.png")'; break;
     }
+
+    leftHand.disabled = true; 
+    rightHand.disabled = true;
+    document.querySelector(".stage-prompt").textContent = "MINUS ONE!";
+    document.querySelector(".stage-prompt").style.color = "red";
 }
 
 function disableHands() {
     leftHand.disabled = true; 
     rightHand.disabled = true; 
-    document.querySelector(".play-left").disabled = true;
-    document.querySelector(".play-right").disabled = true;
+    playLeftUtil.disabled = true;
+    playRightUtil.disabled = true;
 }
 
-function dimButton(hand) {
-    hand.style.filter = "opacity(0.5)";
-}
+function playHand(hand) {
 
-function sendLeft() {
-    disableHands();
-    dimButton(rightHand);
+    disableHands(); // locks hand items from changing;
+    
+    if (hand.className.includes("left")) {
+        changeBtnState(rightHand, "dim");
+        humanHand = leftHand;
+    }
+    else if (hand.className.includes("right")) {
+        changeBtnState(leftHand, "dim");
+        humanHand = rightHand;
+    }
+    
     setBtn.disabled = true;
     pcPlay();
+
+    var winner = checkWinner(humanHand, computerHand);
+
+    setTimeout(() => {
+        alert(`${winner} wins!`);
+        resetBtn.disabled = false;
+    }, 800); 
 }
 
-function sendRight() {
-    disableHands();
-    dimButton(leftHand);
-    setBtn.disabled = true;
-    pcPlay();
+function changeBtnState(hand, mode) {
+    if (mode === "dim") { hand.style.filter = "opacity(0.5)"; }
+    else if (mode === "light") { hand.style.filter = "opacity(1)"; }
 }
 
 function pcPlay() {
-    var playItem = Math.floor(Math.random() * 2); 
-    switch (playItem) {
-        case 0: dimButton(pcLeft); break;
-        case 1: dimButton(pcRight); break;
+    var playItem = Math.floor(Math.random() * 100); 
+    switch (playItem % 2) {
+        case 0: // even = play left
+            changeBtnState(pcRight, "dim"); 
+            computerHand = pcLeft;
+            break; 
+        case 1: // odd = play right
+            changeBtnState(pcRight, "dim"); 
+            computerHand = pcLeft;
+            break;
     }
 }
+
+function checkWinner(humanHand, computerHand) {
+    var winner;
+    var humanChoice = window.getComputedStyle(humanHand).backgroundImage; 
+    var compChoice = window.getComputedStyle(computerHand).backgroundImage; 
+
+    if (humanChoice === compChoice) {
+        winner = "NO ONE";
+    }
+    
+    else if (humanChoice.includes("rock") && compChoice.includes("scissors")
+    || humanChoice.includes("scissors") && compChoice.includes("paper")
+    || humanChoice.includes("paper") && compChoice.includes("rock")) {
+        winner = "HUMAN";
+    }
+
+    else {winner = "COMPUTER";}
+
+    return winner;
+}
+
+function resetGame() {
+    var hands = [leftHand, rightHand, pcLeft, pcRight];
+
+    hands.forEach(element => {
+        changeBtnState(element, "light");
+    });
+    document.querySelector(".stage-prompt").textContent = "SETTING STAGE";
+    document.querySelector(".stage-prompt").style.color = "black";
+    
+    setBtn.disabled = false;
+    leftHand.disabled = false; 
+    rightHand.disabled = false;
+    resetBtn.disabled = true;     
+}
+

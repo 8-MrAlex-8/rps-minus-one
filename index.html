@@ -10,40 +10,46 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link rel = "stylesheet" href = "./fonts.css">
 </head>
-<body>
-    <h1 class = "poppins-medium">Computer</h1>
+<body class = "poppins-regular">
+    <h1>Computer</h1>
 
     <div class="hands-container">
-        <!-- computer hands -->
-        <div class = "hand-button-container">
-            <div class = "computer-left"></div>
-            <div class = "computer-right"></div>
-        </div>
 
-        <div>
-            <h1 class = "stage-prompt"> SETTING STAGE </h1>
-        </div>
-
-        <!-- player hands-->
-        <div class = "hand-button-container">
-            <!--LEFT HAND-->
-            <div class = "left-hand">
-                <button class = "human-left"></button>
+        <section id = "computer-hands">
+            <div class = "hand-button-container">
+                <div class = "computer-left"></div>
+                <div class = "computer-right"></div>
             </div>
+        </section>
 
-            <!--RIGHT HAND-->
-            <div class = "right-hand">
-                <button class = "human-right"></button>
+        <div id = "stage-label">
+            <h1 class = "stage-prompt poppins-bold"> SETTING STAGE </h1>
+        </div>
+
+        <section class = "human-hands">
+            <div class = "hand-button-container">
+                <!--LEFT-->
+                <div class = "left-hand">
+                    <button class = "human-left"></button>
+                    <div><button class = "play-left" disabled>PLAY LEFT</button></div>
+                </div>
+
+                <!--RIGHT-->
+                <div class = "right-hand">
+                    <button class = "human-right"></button>
+                    <div><button class = "play-right" disabled>PLAY RIGHT</button></div>
+                </div>
             </div>
-        </div>
+        </section>
 
-        <div class = "utility">
-            <div><button class = "setter">SET</button></div>
-            <div><button class = "play-left" disabled>PLAY LEFT</button></div>
-            <div><button class = "play-right" disabled>PLAY RIGHT</button></div>
-        </div>
+        <section class = "utility-buttons">
+            <div class = "utility">
+                <div><button class = "setter">SET</button></div>
+                <h1>Player</h1>
+                <div><button class = "resetter" disabled>RESET</button></div>
+            </div>
+        </section>
     
-        <h1 class = "poppins-medium">Player</h1>
     </div>
 
    

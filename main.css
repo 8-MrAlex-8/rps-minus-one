@@ -26,6 +26,10 @@ body {
     gap: 20px;
 }
 
+.utility {
+    gap: 6rem;
+}
+
 .human-left, .human-right, .computer-left, .computer-right {
     background-image: url('assets/rock.png');
     background-repeat: no-repeat;
@@ -33,11 +37,6 @@ body {
     background-size: contain;
     border-radius: 100%;
 
-}
-
-.left-hand, .right-hand {
-    height: 12rem;
-    width: 12rem;
 }
 
 .human-left, .human-right, .computer-left, .computer-right {
@@ -66,15 +65,13 @@ body {
         gap: 1rem;
     }
 
-    .left-hand, .right-hand {
-        height: 8rem;
-        width: 8rem;
-    }
-    
     .human-left, .human-right, .computer-left, .computer-right {
         height: 8rem;
         width: 8rem;
     }
     
+    .utility {
+        gap: 2rem;
+    }
 
 }
