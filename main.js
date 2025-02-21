@@ -3,16 +3,24 @@ document.querySelector(".human-right").addEventListener("click", () => changeHan
 document.querySelector(".setter").addEventListener("click", afterSet);
 document.querySelector(".play-left").addEventListener("click", () => playHand(leftHand));
 document.querySelector(".play-right").addEventListener("click", () => playHand(rightHand));
+document.querySelector(".play-top").addEventListener("click", () => playHand(leftHand));
+document.querySelector(".play-bottom").addEventListener("click", () => playHand(rightHand));
 document.querySelector(".resetter").addEventListener("click", resetGame);
 
 const leftHand = document.querySelector(".human-left");
 const rightHand = document.querySelector(".human-right");
+
 const setBtn = document.querySelector(".setter");
+const resetBtn = document.querySelector(".resetter");
+
 const pcLeft = document.querySelector(".computer-left");
 const pcRight = document.querySelector(".computer-right");
+
 const playLeftUtil = document.querySelector(".play-left");
 const playRightUtil = document.querySelector(".play-right");
-const resetBtn = document.querySelector(".resetter");
+const playTopUtil = document.querySelector(".play-top");
+const playBottomUtil = document.querySelector(".play-bottom");
+
 var humanHand;
 var computerHand;
 
@@ -34,6 +42,8 @@ function afterSet() {
     setBtn.disabled = true;
     playLeftUtil.disabled = false;
     playRightUtil.disabled = false;
+    playTopUtil.disabled = false;
+    playBottomUtil.disabled = false;
 
     var randomRollLeft = Math.floor(Math.random() * 3); 
     var randomRollRight = Math.floor(Math.random() * 3); 
@@ -61,6 +71,8 @@ function disableHands() {
     rightHand.disabled = true; 
     playLeftUtil.disabled = true;
     playRightUtil.disabled = true;
+    playTopUtil.disabled = true;
+    playBottomUtil.disabled = true;
 }
 
 function playHand(hand) {
@@ -82,9 +94,12 @@ function playHand(hand) {
     var winner = checkWinner(humanHand, computerHand);
 
     setTimeout(() => {
-        alert(`${winner} wins!`);
+        if (winner != "HUMAN" && winner != "COMPUTER")
+            document.querySelector(".stage-prompt").textContent = "Tied Game!";
+        else 
+            document.querySelector(".stage-prompt").textContent = (`${winner} wins!`);
         resetBtn.disabled = false;
-    }, 800); 
+    }, 850); 
 }
 
 function changeBtnState(hand, mode) {
