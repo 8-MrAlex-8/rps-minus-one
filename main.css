@@ -3,7 +3,34 @@ body {
     text-align: center;
 }
 
-@media (min-width: 375px){
+.warning-container, .alternate {
+    display: none;
+}
+
+.hand-button-container, .utility {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+}
+
+@media (max-width: 318px) {
+    .content-container {
+        display: none;
+    }
+
+    .warning-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 0 3rem;
+        height: 100vh;
+    }
+}
+
+@media (min-width: 319px){
     .content-container {
         display: flex;
         flex-direction: column;
@@ -32,14 +59,6 @@ body {
         border-radius: 100%;     
     }
 
-    .hand-button-container, .utility {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        gap: 2rem;
-    }
-
     .play-button {
         width: 4rem;
     }
@@ -57,7 +76,7 @@ body {
     }
 }
 
-@media (min-width: 560px) {
+@media (min-width: 495px) {
     .left-hand { flex-direction: row-reverse; }
     .right-hand { flex-direction: row; }
     
@@ -68,157 +87,93 @@ body {
     }
 
     .hand {
-        height: 7.5rem;
-        width: 7.5rem;
+        height: 7rem;
+        width: 7rem;
+    }
+
+    .content-container {
+        justify-content: center;
+        gap: 0.35rem;
     }
 }
 
-@media (min-width: 768px) {
+@media (min-width: 670px) {
     .content-container {
         display: flex;
         flex-direction: row-reverse;
-        justify-content: center;
+        justify-content: space-evenly;
         align-items: center;
-        gap: 2rem;
     }
 
-    .hand-button-container, .utility {
+    .hand-button-container {
         display: flex;
         flex-direction: column;
-        justify-content: center;
         align-items: center;
         gap: 2rem;
+        height: 100vh;
     }
 
-    .play-button {
+    .play-button, .mainbtn, .mainhead {
+        display: none;
+    }
+
+    .utility-buttons {
         display: none;
     }
     
     .hand {
-        height: 10rem;
-        width: 10rem;
+        height: 7.5rem;
+        width: 7.5rem;
+    }
+
+    .toggleable, .alternate {
+        display: block;
     }
 
     .toggleable {
-        display: block;
+        width: 4rem;
     }
 
     .left-hand, .right-hand {
-        display: flex;
         flex-direction: row-reverse;
-        justify-content: center;
-        align-items: center;
         gap: 0.75rem;
     }
+
+    #stage-label {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
 } 
 
-/*
-.left-hand, .right-hand {
-    display: flex;
-    flex-direction: column;
-    justify-items: center;
-    align-content: center;  
-    gap: 12px;
+@media (min-width: 900px) {
+    p.stage-prompt {
+        font-size: 2.5rem;
+    }
+
+    p.heading {
+        font-size: 1.85rem;
+    }
+
+    .hand {
+        height: 8.5rem;
+        width: 8.5rem;
+    }
 }
 
-.hand-button-container, .utility {
-    display: flex;
-    flex-direction: column;
-    justify-items: center;
-    align-content: center;  
-    gap: 20px;
+@media (min-width: 1200px) {
+    p.stage-prompt {
+        font-size: 4.25rem;
+    }
+
+    p.heading {
+        font-size: 3.45rem;
+    }
+
+    .hand {
+        height: 10rem;
+        width: 10rem;
+    }
 }
-
-.utility {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;  
-    gap: 3rem;
-    margin-bottom: 2rem;
-}
-
-.human-left, .human-right, .computer-left, .computer-right {
-    background-image: url('assets/rock.png');
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
-    border-radius: 100%;
-}
-
-.human-left, .human-right, .computer-left, .computer-right {
-    height: 12rem;
-    width: 12rem;
-}
-
-.content-container {
-    display: flex;
-    flex-direction: row;
-    justify-items: center;
-    align-content: center;
-    gap: 3rem;
-    margin: 0 2rem;
-}
-
-.play-left, .play-right {
-    display: none;
-}
-
-@media (max-width: 480px) {
-    body {
-        overflow-x: hidden;
-    }
-
-    h1 {
-        margin: 1.2rem 0;
-    }
-
-    h1 {
-        font-size: 1.5rem;
-    }
-
-    .content-container {
-        display: flex;
-        flex-direction: column;
-        justify-items: center;
-        align-content: center;
-        gap: 1rem;
-        margin: 0;
-    }
-
-    .hand-button-container, .utility {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;  
-        gap: 20px;
-    }    
-
-    .human-left, .human-right, .computer-left, .computer-right {
-        height: 5rem;
-        width: 5rem;
-    }
-    
-    .utility {
-        gap: 1rem;
-    }
-
-    .play-left, .play-right {
-        display: block;
-        height: 2.25rem;
-        width: 5rem;
-        font-size: 0.8rem;
-    }
-
-    .play-top, .play-bottom {
-        display: none;
-    }
-
-    .left-hand, .right-hand {
-        display: flex;
-        flex-direction: column;
-        justify-items: center;
-        align-content: center;  
-        gap: 12px;
-    }
-} */

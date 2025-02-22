@@ -11,51 +11,58 @@
     <link rel = "stylesheet" href = "./fonts.css">
 </head>
 <body class = "poppins-regular">
+
+    <div class="warning-container">
+        <h3> Oops! Your screen width is too low. </h3>
+        <p> Please utilize a bigger screen for a better experience.</p>
+    </div>
+
     <div class="content-container">
         
-        <p class = "heading">Computer</p>
+        <p class = "heading mainhead">Computer</p>
 
         <section id = "computer-hands">
             <div class = "hand-button-container">
+                <p class = "heading alternate">Computer</p>
                 <div class = "computer-left hand"></div>
                 <div class = "computer-right hand"></div>
             </div>
         </section>
 
         <div id = "stage-label">
-            <p class = "stage-prompt poppins-bold"> SETTING STAGE </p>
+            <div><button class = "setter alternate">SET</button></div>
+            <div><p class = "stage-prompt poppins-bold"> SETTING PHASE </p></div>
+            <div><button class = "resetter alternate" disabled>RESET</button></div>
         </div>
 
         <section class = "human-hands">
             <div class = "hand-button-container">
-                
+                <p class = "heading alternate">Player</p>
                 <!--LEFT-->
                 <div class = "left-hand">
                     <button class = "human-left hand"></button>
                     <div><button class = "play-left play-button" disabled>PLAY LEFT</button></div>
-                    <div><button class = "play-top toggleable" disabled>PLAY TOP</button></div>
+                    <div><button class = "play-top toggleable" disabled>PLAY HEAD</button></div>
                 </div>
 
                 <!--RIGHT-->
                 <div class = "right-hand">
                     <button class = "human-right hand"></button>
                     <div><button class = "play-right play-button" disabled>PLAY RIGHT</button></div>
-                    <div><button class = "play-bottom toggleable" disabled>PLAY BOTTOM</button></div>
+                    <div><button class = "play-bottom toggleable" disabled>PLAY BASE</button></div>
                 </div>
             </div>
         </section>
 
         <section class = "utility-buttons">
             <div class = "utility">
-                <div><button class = "setter">SET</button></div>
-                <p class = "heading">Player</p>
-                <div><button class = "resetter" disabled>RESET</button></div>
+                <div><button class = "setter mainbtn">SET</button></div>
+                <p class = "heading mainhead">Player</p>
+                <div><button class = "resetter mainbtn" disabled>RESET</button></div>
             </div>
         </section>
     
     </div>
-
-   
         
     <script src = "./main.js"></script>
 </body>
