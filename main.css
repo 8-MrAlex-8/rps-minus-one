@@ -50,7 +50,7 @@ body {
         font-weight: 800;
     }
 
-    .hand {
+    .human-left, .human-right {
         height: 6rem;
         width: 6rem;
         background-image: url('assets/rock.png');
@@ -58,6 +58,13 @@ body {
         background-position: center;
         background-size: contain;
         border-radius: 100%;     
+    }
+
+    .computer-left, .computer-right {
+        height: 6rem;
+        width: 6rem;
+        background-color: black;
+        border-radius: 100%;
     }
 
     .play-button {
