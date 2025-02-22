@@ -1,8 +1,7 @@
 // Plays "Nessun Dorma" in the background, the same music playing while
 // Kim Jeong-rae and Choi Woo-seok played this same game in Season 2: Episode 1,
 // of 'Squid Game'.
-var music = document.querySelector(".music");
-music.play();
+document.querySelector(".music").addEventListener("onload", () => {music.play()});
 
 // Adding event listeners for each button available.
 document.querySelector(".human-left").addEventListener("click", () => changeHand(leftHand));
@@ -98,8 +97,7 @@ function afterSet() {
 
     // Initiates a "Minus One" prompt for the player to select the hand they wish
     // to play. Turns the text red to add to the tension.
-    document.querySelector(".stage-prompt").textContent = "MINUS ONE!";
-    document.querySelector(".stage-prompt").style.color = "red";
+    document.querySelector(".stage-prompt").textContent = "...MINUS ONE!";
 }
 
 function disableHands() {
@@ -139,10 +137,14 @@ function playHand(hand) {
 
     // Sets post-game notification messages and states.
     setTimeout(() => {
-        if (winner != "HUMAN" && winner != "COMPUTER")
+        if (winner != "HUMAN" && winner != "COMPUTER") {
+            document.querySelector(".stage-prompt").style.color = "#f5f5f5";
             document.querySelector(".stage-prompt").textContent = "Tied Game!";
-        else 
+        }
+        else {
+            document.querySelector(".stage-prompt").style.color = "#f5f5f5"; 
             document.querySelector(".stage-prompt").textContent = (`${winner} wins!`);
+        }
     }, 850); 
 
     setTimeout(() => {
@@ -205,21 +207,18 @@ function resetGame() {
         changeBtnState(element, "light");
     });
     document.querySelector(".stage-prompt").textContent = "SETTING STAGE";
-    document.querySelector(".stage-prompt").style.color = "black";
-    
-    // Fixes buttons back to initial state.
-    setBtn.forEach(btn => btn.disabled = false);
-    leftHand.disabled = false; 
-    rightHand.disabled = false;
-    resetBtn.forEach(btn => btn.disabled = true);   
-
 
     var pcHands = [pcLeft, pcRight];
 
     // Hides PC's hands again, based on initial state.
     pcHands.forEach(hand => {
-        hand.style.backgroundImage = 'none';
-        hand.style.backgroundColor = 'black';
+        hand.style.backgroundImage = "url('./assets/question-mark.png')";
     })
+        
+    // Fixes buttons back to initial state.
+    setBtn.forEach(btn => btn.disabled = false);
+    leftHand.disabled = false; 
+    rightHand.disabled = false;
+    resetBtn.forEach(btn => btn.disabled = true);  
 }
 
