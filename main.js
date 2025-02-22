@@ -1,17 +1,19 @@
 document.querySelector(".human-left").addEventListener("click", () => changeHand(leftHand));
 document.querySelector(".human-right").addEventListener("click", () => changeHand(rightHand));
-document.querySelector(".setter").addEventListener("click", afterSet);
+
 document.querySelector(".play-left").addEventListener("click", () => playHand(leftHand));
 document.querySelector(".play-right").addEventListener("click", () => playHand(rightHand));
 document.querySelector(".play-top").addEventListener("click", () => playHand(leftHand));
 document.querySelector(".play-bottom").addEventListener("click", () => playHand(rightHand));
-document.querySelector(".resetter").addEventListener("click", resetGame);
+
+document.querySelectorAll(".setter").forEach(btn => btn.addEventListener("click", afterSet));
+document.querySelectorAll(".resetter").forEach(btn => btn.addEventListener("click", resetGame));
 
 const leftHand = document.querySelector(".human-left");
 const rightHand = document.querySelector(".human-right");
 
-const setBtn = document.querySelector(".setter");
-const resetBtn = document.querySelector(".resetter");
+const setBtn = document.querySelectorAll(".setter");
+const resetBtn = document.querySelectorAll(".resetter");
 
 const pcLeft = document.querySelector(".computer-left");
 const pcRight = document.querySelector(".computer-right");
@@ -23,6 +25,9 @@ const playBottomUtil = document.querySelector(".play-bottom");
 
 var humanHand;
 var computerHand;
+
+var humanScore = 0;
+var computerScore = 0;
 
 function changeHand(hand) {
     var choice = window.getComputedStyle(hand).backgroundImage; 
@@ -39,7 +44,7 @@ function changeHand(hand) {
 }
 
 function afterSet() {
-    setBtn.disabled = true;
+    setBtn.forEach(btn => btn.disabled = true);
     playLeftUtil.disabled = false;
     playRightUtil.disabled = false;
     playTopUtil.disabled = false;
@@ -88,18 +93,28 @@ function playHand(hand) {
         humanHand = rightHand;
     }
     
-    setBtn.disabled = true;
+    setBtn.forEach(btn => btn.disabled = true);
     pcPlay();
 
     var winner = checkWinner(humanHand, computerHand);
+
+    switch (winner) {
+        case "HUMAN": humanScore++; break;
+        case "COMPUTER": computerScore++; break;
+        default: break;
+    }
 
     setTimeout(() => {
         if (winner != "HUMAN" && winner != "COMPUTER")
             document.querySelector(".stage-prompt").textContent = "Tied Game!";
         else 
             document.querySelector(".stage-prompt").textContent = (`${winner} wins!`);
-        resetBtn.disabled = false;
     }, 850); 
+
+    setTimeout(() => {
+        alert(`COMPUTER SCORE: ${computerScore} || HUMAN SCORE: ${humanScore}`);
+        resetBtn.forEach(btn => btn.disabled = false);
+    }, 1500)
 }
 
 function changeBtnState(hand, mode) {
@@ -150,9 +165,9 @@ function resetGame() {
     document.querySelector(".stage-prompt").textContent = "SETTING STAGE";
     document.querySelector(".stage-prompt").style.color = "black";
     
-    setBtn.disabled = false;
+    setBtn.forEach(btn => btn.disabled = false);
     leftHand.disabled = false; 
     rightHand.disabled = false;
-    resetBtn.disabled = true;     
+    resetBtn.forEach(btn => btn.disabled = true);   
 }
 

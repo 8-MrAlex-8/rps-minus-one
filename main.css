@@ -1,6 +1,7 @@
 body {
     margin: 0;
     text-align: center;
+    overflow: none;
 }
 
 .warning-container, .alternate {
@@ -148,7 +149,7 @@ body {
 
 } 
 
-@media (min-width: 900px) {
+@media (min-width: 860px) {
     p.stage-prompt {
         font-size: 2.5rem;
     }
@@ -163,13 +164,13 @@ body {
     }
 }
 
-@media (min-width: 1200px) {
+@media (min-width: 1000px) {
     p.stage-prompt {
-        font-size: 4.25rem;
+        font-size: 3.5rem;
     }
 
     p.heading {
-        font-size: 3.45rem;
+        font-size: 2.5rem;
     }
 
     .hand {
