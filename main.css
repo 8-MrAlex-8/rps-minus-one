@@ -37,6 +37,10 @@ button:not(.hand):not(:disabled):hover {
     cursor: pointer;
 }
 
+.russian-roulette {
+    display: none;
+}
+
 @media (max-width: 318px) {
     .content-container {
         display: none;
@@ -173,6 +177,7 @@ button:not(.hand):not(:disabled):hover {
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        gap: 0.75rem;
     }
 
 } 

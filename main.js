@@ -1,7 +1,11 @@
 // Plays "Nessun Dorma" in the background, the same music playing while
 // Kim Jeong-rae and Choi Woo-seok played this same game in Season 2: Episode 1,
 // of 'Squid Game'.
-document.querySelector(".music").addEventListener("onload", () => {music.play()});
+// const music = document.querySelector(".music");
+
+// music.addEventListener("canplaythrough", () => {
+//     music.play().catch(error => console.log("Autoplay prevented:", error));
+// });
 
 // Adding event listeners for each button available.
 document.querySelector(".human-left").addEventListener("click", () => changeHand(leftHand));
@@ -140,17 +144,84 @@ function playHand(hand) {
         if (winner != "HUMAN" && winner != "COMPUTER") {
             document.querySelector(".stage-prompt").style.color = "#f5f5f5";
             document.querySelector(".stage-prompt").textContent = "Tied Game!";
+            resetBtn.forEach(btn => btn.disabled = false);
         }
         else {
             document.querySelector(".stage-prompt").style.color = "#f5f5f5"; 
             document.querySelector(".stage-prompt").textContent = (`${winner} wins!`);
+            setTimeout(() => {
+                document.querySelector(".stage-prompt").style.display = 'none';
+                switch(winner) {
+                    case "HUMAN": russianRoulette("COMPUTER"); break;
+                    case "COMPUTER": russianRoulette("HUMAN"); break;
+                    default: break;
+                }
+            }, 1000)
         }
     }, 850); 
 
     setTimeout(() => {
         alert(`COMPUTER SCORE: ${computerScore} || HUMAN SCORE: ${humanScore}`);
-        resetBtn.forEach(btn => btn.disabled = false);
     }, 1500)
+}
+
+function russianRoulette(target) {
+    if (target === "COMPUTER") {
+        document.querySelector("img.gun").src = "./assets/gun-safe-right.png";
+    }
+
+    else if (target === "HUMAN") {
+        document.querySelector("img.gun").src = "./assets/gun-safe-left.png";
+    }
+    
+    // Makes the gun and text visible.
+    document.querySelector("div.russian-roulette").style.display='block';
+    document.querySelector("p.gun-label").textContent = "Spinning the barrel...";
+
+    setTimeout(() => {    
+        var gunSpin = new Audio('./assets/revolver-spin.mp3');
+        gunSpin.play();
+    }, 300) // 3 seconds
+
+    setTimeout(() => {    
+        var gunCock = new Audio('./assets/revolver-cock.mp3');
+        gunCock.play();
+    }, 3000) // 2 seconds
+
+    var revolverBarrel = [0, 0, 0, 0, 1, 1, 0, 0];
+    var chamber = revolverBarrel[Math.floor(Math.random()*revolverBarrel.length)];
+    console.log(chamber);
+
+    setTimeout(() => {
+        var gunImgElement = document.querySelector('img.gun');
+        var gunLabelElement = document.querySelector("p.gun-label");
+        if (chamber == 1) {
+            // play gunshot noise
+            var gunShot = new Audio('./assets/revolver-shot.mp3'); // 4 seconds
+            gunShot.play();  
+            // switch to gunshot image
+
+            console.log("Target before timeout:", target);
+            setTimeout(() => {
+                console.log("Executing timeout for:", target); // Check what target is when timeout runs
+                if (target === "COMPUTER") {
+                    gunImgElement.src = "./assets/gun-fired-right.png"; 
+                    gunLabelElement.textContent = "Opponent has been killed. You win!";
+                } else if (target === "HUMAN") {
+                    gunImgElement.src = "./assets/gun-fired-left.png"; 
+                    gunLabelElement.textContent = "You have been executed! Game over.";
+                }
+            }, 700);
+        }
+    
+        else if (chamber == 0) {
+            var gunEmpty = new Audio('./assets/revolver-empty.mp3');
+            gunEmpty.play();
+            document.querySelector("p.gun-label").textContent = "Safe! Feel free to reset the game.";
+        }
+    }, 8000)
+
+    resetBtn.forEach(btn => btn.disabled = false);
 }
 
 function changeBtnState(hand, mode) {
@@ -170,8 +241,8 @@ function pcPlay() {
             computerHand = pcLeft;
             break; 
         case 1: // odd = play right
-            changeBtnState(pcRight, "dim"); 
-            computerHand = pcLeft;
+            changeBtnState(pcLeft, "dim"); 
+            computerHand = pcRight;
             break;
     }
 }
@@ -200,13 +271,17 @@ function checkWinner(humanHand, computerHand) {
 }
 
 function resetGame() {
+
+    document.querySelector('.russian-roulette').style.display='none';
+
     var hands = [leftHand, rightHand, pcLeft, pcRight];
 
     // Removes dim-opacity DOM manipulation from earlier.
     hands.forEach(element => {
         changeBtnState(element, "light");
     });
-    document.querySelector(".stage-prompt").textContent = "SETTING STAGE";
+    document.querySelector(".stage-prompt").textContent = "SETTING PHASE";
+    document.querySelector('.stage-prompt').style.display='block';
 
     var pcHands = [pcLeft, pcRight];
 
