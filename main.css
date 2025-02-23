@@ -35,6 +35,14 @@ button:not(.hand):not(:disabled):hover {
     background: linear-gradient(45deg, #ec0000 15%, #1a1a1a 100%);
     color: #f5f5f5;
     cursor: pointer;
+    -webkit-animation: shadow-drop-2-center 0.3s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    animation: shadow-drop-2-center 0.3s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+button.hand:not(:disabled):hover {
+    cursor: pointer;
+    -webkit-animation: shadow-drop-1-center 0.3s cubic-bezier(0.500, 0.920, 0.900, 1.880) both;
+    animation: shadow-drop-1-center 0.3s cubic-bezier(0.500, 0.920, 0.900, 1.880) both;
 }
 
 .russian-roulette {
@@ -110,13 +118,13 @@ button:not(.hand):not(:disabled):hover {
 
     button {
         padding: 0.5rem; 
+        font-size: 0.7rem;
     }
 
     img.gun {
         height: 84px;
         width: 84px;
     }
-    
 }
 
 @media (min-width: 495px) {
@@ -168,6 +176,11 @@ button:not(.hand):not(:disabled):hover {
     .utility-buttons {
         display: none;
     }
+
+    button {
+        padding: 0.8rem; 
+        font-size: 1rem;
+    }
     
     .hand {
         height: 7.5rem;
@@ -214,6 +227,7 @@ button:not(.hand):not(:disabled):hover {
 
     button {
         padding: 1rem; 
+        font-size: 1rem;
     }
 
     img.gun {
@@ -235,4 +249,5 @@ button:not(.hand):not(:disabled):hover {
         height: 10rem;
         width: 10rem;
     }
+
 }

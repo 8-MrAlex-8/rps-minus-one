@@ -1,11 +1,11 @@
 // Plays "Nessun Dorma" in the background, the same music playing while
 // Kim Jeong-rae and Choi Woo-seok played this same game in Season 2: Episode 1,
 // of 'Squid Game'.
-// const music = document.querySelector(".music");
+const music = document.querySelector(".music");
 
-// music.addEventListener("canplaythrough", () => {
-//     music.play().catch(error => console.log("Autoplay prevented:", error));
-// });
+music.addEventListener("canplaythrough", () => {
+    music.play().catch(error => console.log("Autoplay prevented:", error));
+});
 
 // Adding event listeners for each button available.
 document.querySelector(".human-left").addEventListener("click", () => changeHand(leftHand));
@@ -101,7 +101,7 @@ function afterSet() {
 
     // Initiates a "Minus One" prompt for the player to select the hand they wish
     // to play. Turns the text red to add to the tension.
-    document.querySelector(".stage-prompt").textContent = "...MINUS ONE!";
+    document.querySelector(".stage-prompt").innerHTML = '<p class = "stage-prompt poppins-bold scale-in-center"> MINUS ONE! </p>';
 }
 
 function disableHands() {
@@ -188,7 +188,9 @@ function russianRoulette(target) {
         gunCock.play();
     }, 3000) // 2 seconds
 
-    var revolverBarrel = [0, 0, 0, 0, 1, 1, 0, 0];
+    //var revolverBarrel = [0];
+    //var revolverBarrel = [1];
+    var revolverBarrel = [0, 1, 0, 0, 1, 1, 0, 0];
     var chamber = revolverBarrel[Math.floor(Math.random()*revolverBarrel.length)];
     console.log(chamber);
 
@@ -209,15 +211,16 @@ function russianRoulette(target) {
                     gunImgElement.src = "./assets/gun-fired-left.png"; 
                     gunLabelElement.textContent = "You have been executed! Game over.";
                 }
-            }, 700);
+                resetBtn.forEach(btn => btn.disabled = false);
+            }, 900);
         }
     
         else if (chamber == 0) {
             var gunEmpty = new Audio('./assets/revolver-empty.mp3');
             gunEmpty.play();
             document.querySelector("p.gun-label").textContent = "Safe! Feel free to reset the game.";
+            resetBtn.forEach(btn => btn.disabled = false);
         }
-        resetBtn.forEach(btn => btn.disabled = false);
     }, 8000)
 }
 
