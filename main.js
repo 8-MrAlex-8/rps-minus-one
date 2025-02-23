@@ -199,11 +199,9 @@ function russianRoulette(target) {
             // play gunshot noise
             var gunShot = new Audio('./assets/revolver-shot.mp3'); // 4 seconds
             gunShot.play();  
-            // switch to gunshot image
-
-            console.log("Target before timeout:", target);
+            
+            // switch to gunshot image; join update with gunshot sound
             setTimeout(() => {
-                console.log("Executing timeout for:", target); // Check what target is when timeout runs
                 if (target === "COMPUTER") {
                     gunImgElement.src = "./assets/gun-fired-right.png"; 
                     gunLabelElement.textContent = "Opponent has been killed. You win!";
@@ -219,9 +217,8 @@ function russianRoulette(target) {
             gunEmpty.play();
             document.querySelector("p.gun-label").textContent = "Safe! Feel free to reset the game.";
         }
+        resetBtn.forEach(btn => btn.disabled = false);
     }, 8000)
-
-    resetBtn.forEach(btn => btn.disabled = false);
 }
 
 function changeBtnState(hand, mode) {
