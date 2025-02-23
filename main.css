@@ -76,8 +76,8 @@ button:not(.hand):not(:disabled):hover {
     }
 
     .human-left, .human-right {
-        height: 6rem;
-        width: 6rem;
+        height: 5rem;
+        width: 5rem;
         background-image: url('./assets/rock.png');
         background-repeat: no-repeat;
         background-position: center;
@@ -86,8 +86,8 @@ button:not(.hand):not(:disabled):hover {
     }
 
     .computer-left, .computer-right {
-        height: 6rem;
-        width: 6rem;
+        height: 5rem;
+        width: 5rem;
         background-image: url('./assets/question-mark.png');
         background-repeat: no-repeat;
         background-position: center;
@@ -111,6 +111,12 @@ button:not(.hand):not(:disabled):hover {
     button {
         padding: 0.5rem; 
     }
+
+    img.gun {
+        height: 84px;
+        width: 84px;
+    }
+    
 }
 
 @media (min-width: 495px) {
@@ -131,6 +137,11 @@ button:not(.hand):not(:disabled):hover {
     .content-container {
         justify-content: center;
         gap: 0.35rem;
+    }
+
+    img.gun {
+        height: 130px;
+        width: 130px;
     }
 }
 
@@ -180,6 +191,11 @@ button:not(.hand):not(:disabled):hover {
         gap: 0.75rem;
     }
 
+    img.gun {
+        height: 180px;
+        width: 180px;
+    }
+
 } 
 
 @media (min-width: 860px) {
@@ -198,6 +214,11 @@ button:not(.hand):not(:disabled):hover {
 
     button {
         padding: 1rem; 
+    }
+
+    img.gun {
+        height: 220px;
+        width: 220px;
     }
 }
 
