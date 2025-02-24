@@ -190,7 +190,7 @@ function russianRoulette(target) {
 
     //var revolverBarrel = [0];
     //var revolverBarrel = [1];
-    var revolverBarrel = [0, 1, 0, 0, 1, 1, 0, 0];
+    var revolverBarrel = [0, 1, 0, 0, 0, 1];
     var chamber = revolverBarrel[Math.floor(Math.random()*revolverBarrel.length)];
     console.log(chamber);
 

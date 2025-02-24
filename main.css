@@ -49,6 +49,20 @@ button.hand:not(:disabled):hover {
     display: none;
 }
 
+.instructions-container {
+    width: 75vw;
+    line-height: 1.8;
+    margin: 0 auto;
+}
+
+.gamepage-lead {
+    padding: 0 8rem;
+    height: 8vh;
+    background-color: #f5f5f5;
+    color: black;
+    margin: 2rem 0 0;
+}
+
 @media (max-width: 318px) {
     .content-container {
         display: none;

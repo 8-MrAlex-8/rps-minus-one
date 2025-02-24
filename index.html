@@ -13,65 +13,29 @@
     <link rel = "icon" type= "image/x-icon" href = "./assets/aelexander-white.ico">
 </head>
 <body class = "poppins-regular">
+    <div class = "instructions-container fade-in-left">
+        <h1> Instructions </h1>
+        <p> 
+            This Javascript game is the classic Rock, Paper, Scissors with a twist.
+            It follows the theme as shown in Squid Game (Season 2: Episode 1), where
+            the players play the Minus-One variant, and Russian Roulette dictating
+            the victor. Accompanying the game is the song "Nessun Dorma" by 
+            Giacomo Puccini Turandot. The instructions are as follows:
+        </p>
+        <br>
+        <p> 
+            1. During the <b>Setting Phase</b>, the player is to pick Rock, Paper, or 
+            Scissors, with two hands adjustable to their choice. <br><br>
+            2. After the <b>"Minus One!"</b> prompt, the player is to pick which hand 
+            to put in play. The player can no longer adjust their set hands in this phase, 
+            and can only pick one of the two that they have set. <br><br>
+            3. Once the round is finished and the winner is dictated, the <b>Russian Roulette</b>
+            phase will start. Currently, the game is set to hold 2 bullets in the chamber.
+        </p>
 
-    <audio src = "./assets/Nessun Dorma.mp3" class = "music" loop autoplay></audio>
-
-    <div class="warning-container">
-        <h3> Oops! Your screen width is too low. </h3>
-        <p> Please utilize a bigger screen for a better experience.</p>
+        <a href = "./game.html"><button class = "gamepage-lead">
+            Play Game
+        </button></a>
     </div>
-
-    <div class="content-container">
-        
-        <p class = "heading mainhead">Computer</p>
-
-        <section id = "computer-hands">
-            <div class = "hand-button-container fade-in-right">
-                <p class = "heading alternate">Computer</p>
-                <div class = "computer-left hand"></div>
-                <div class = "computer-right hand"></div>
-            </div>
-        </section>
-
-        <div id = "stage-label">
-            <div><button class = "setter alternate poppins-semibold">SET HANDS</button></div>
-            <div><p class = "stage-prompt poppins-bold scale-in-center"> SETTING PHASE </p></div>
-            <div class = "russian-roulette">
-                <img src = "" class = "gun">
-                <p class = "gun-label">Spinning the barrel...</p>
-            </div>
-            <div><button class = "resetter alternate poppins-semibold" disabled>RESET GAME</button></div>
-        </div>
-
-        <section class = "human-hands">
-            <div class = "hand-button-container fade-in-left">
-                <p class = "heading alternate">Player</p>
-                <!--LEFT-->
-                <div class = "left-hand">
-                    <button class = "human-left hand"></button>
-                    <div><button class = "play-left play-button poppins-semibold" disabled>PLAY LEFT</button></div>
-                    <div><button class = "play-top toggleable poppins-semibold" disabled>PLAY HEAD</button></div>
-                </div>
-
-                <!--RIGHT-->
-                <div class = "right-hand">
-                    <button class = "human-right hand"></button>
-                    <div><button class = "play-right play-button poppins-semibold" disabled>PLAY RIGHT</button></div>
-                    <div><button class = "play-bottom toggleable poppins-semibold" disabled>PLAY BASE</button></div>
-                </div>
-            </div>
-        </section>
-
-        <section class = "utility-buttons">
-            <div class = "utility">
-                <div><button class = "setter mainbtn poppins-semibold">SET GAME</button></div>
-                <p class = "heading mainhead">Player</p>
-                <div><button class = "resetter mainbtn poppins-semibold" disabled>RESET GAME</button></div>
-            </div>
-        </section>
-    
-    </div>
-        
-    <script src = "./main.js"></script>
 </body>
 </html>
