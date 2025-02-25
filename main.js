@@ -50,12 +50,12 @@ function changeHand(hand) {
     /* getComputedStyle() returns ACTUAL VALUE of defined CSS property */
 
     // Changes the play item image when player clicks on their own hand buttons.
-    if (choice.includes("rock.png")) {
-        hand.style.backgroundImage = 'url("./assets/paper.png")';
-    } else if (choice.includes("paper.png")) {
-        hand.style.backgroundImage = 'url("./assets/scissors.png")';
+    if (choice.includes("rock.webp")) {
+        hand.style.backgroundImage = 'url("./assets/paper.webp")';
+    } else if (choice.includes("paper.webp")) {
+        hand.style.backgroundImage = 'url("./assets/scissors.webp")';
     } else {
-        hand.style.backgroundImage = 'url("./assets/rock.png")';
+        hand.style.backgroundImage = 'url("./assets/rock.webp")';
     }
 }
 
@@ -72,15 +72,15 @@ function afterSet() {
 
     // Assigns pictures to respective choices.
     switch (randomRollLeft) {
-        case 0: pcLeft.style.backgroundImage='url("./assets/rock.png")'; break;
-        case 1: pcLeft.style.backgroundImage='url("./assets/paper.png")'; break;
-        case 2: pcLeft.style.backgroundImage='url("./assets/scissors.png")'; break;
+        case 0: pcLeft.style.backgroundImage='url("./assets/rock.webp")'; break;
+        case 1: pcLeft.style.backgroundImage='url("./assets/paper.webp")'; break;
+        case 2: pcLeft.style.backgroundImage='url("./assets/scissors.webp")'; break;
     }
     
     switch (randomRollRight) {
-        case 0: pcRight.style.backgroundImage='url("./assets/rock.png")'; break;
-        case 1: pcRight.style.backgroundImage='url("./assets/paper.png")'; break;
-        case 2: pcRight.style.backgroundImage='url("./assets/scissors.png")'; break;
+        case 0: pcRight.style.backgroundImage='url("./assets/rock.webp")'; break;
+        case 1: pcRight.style.backgroundImage='url("./assets/paper.webp")'; break;
+        case 2: pcRight.style.backgroundImage='url("./assets/scissors.webp")'; break;
     }
 
     // Sets CSS for the left and right hands of the computer. Initially, the image
@@ -167,11 +167,11 @@ function playHand(hand) {
 
 function russianRoulette(target) {
     if (target === "COMPUTER") {
-        document.querySelector("img.gun").src = "./assets/gun-safe-right.png";
+        document.querySelector("img.gun").src = "./assets/gun-safe-right.webp";
     }
 
     else if (target === "HUMAN") {
-        document.querySelector("img.gun").src = "./assets/gun-safe-left.png";
+        document.querySelector("img.gun").src = "./assets/gun-safe-left.webp";
     }
     
     // Makes the gun and text visible.
@@ -206,10 +206,10 @@ function russianRoulette(target) {
             // switch to gunshot image; join update with gunshot sound
             setTimeout(() => {
                 if (target === "COMPUTER") {
-                    gunImgElement.src = "./assets/gun-fired-right.png"; 
+                    gunImgElement.src = "./assets/gun-fired-right.webp"; 
                     gunLabelElement.textContent = "Opponent has been killed. You win!";
                 } else if (target === "HUMAN") {
-                    gunImgElement.src = "./assets/gun-fired-left.png"; 
+                    gunImgElement.src = "./assets/gun-fired-left.webp"; 
                     gunLabelElement.textContent = "You have been executed! Game over.";
                 }
                 resetBtn.forEach(btn => btn.disabled = false);
@@ -288,7 +288,7 @@ function resetGame() {
 
     // Hides PC's hands again, based on initial state.
     pcHands.forEach(hand => {
-        hand.style.backgroundImage = "url('./assets/question-mark.png')";
+        hand.style.backgroundImage = "url('./assets/question-mark.webp')";
     })
         
     // Fixes buttons back to initial state.

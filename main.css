@@ -105,7 +105,7 @@ button.hand:not(:disabled):hover {
     .human-left, .human-right {
         height: 5rem;
         width: 5rem;
-        background-image: url('./assets/rock.png');
+        background-image: url('./assets/rock.webp');
         background-repeat: no-repeat;
         background-position: center;
         background-size: cover;
@@ -115,7 +115,7 @@ button.hand:not(:disabled):hover {
     .computer-left, .computer-right {
         height: 5rem;
         width: 5rem;
-        background-image: url('./assets/question-mark.png');
+        background-image: url('./assets/question-mark.webp');
         background-repeat: no-repeat;
         background-position: center;
         background-size: cover;
