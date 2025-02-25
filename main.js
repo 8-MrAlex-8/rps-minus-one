@@ -188,9 +188,10 @@ function russianRoulette(target) {
         gunCock.play();
     }, 3000) // 2 seconds
 
+    var revolverBarrel = [0, 1, 0, 0, 0, 1];
     //var revolverBarrel = [0];
     //var revolverBarrel = [1];
-    var revolverBarrel = [0, 1, 0, 0, 0, 1];
+
     var chamber = revolverBarrel[Math.floor(Math.random()*revolverBarrel.length)];
     console.log(chamber);
 
@@ -212,7 +213,7 @@ function russianRoulette(target) {
                     gunLabelElement.textContent = "You have been executed! Game over.";
                 }
                 resetBtn.forEach(btn => btn.disabled = false);
-            }, 900);
+            }, 800);
         }
     
         else if (chamber == 0) {
