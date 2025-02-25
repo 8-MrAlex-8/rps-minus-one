@@ -7,6 +7,27 @@ music.addEventListener("canplaythrough", () => {
     music.play().catch(error => console.log("Autoplay prevented:", error));
 });
 
+// pre-loading images for lag-less rendering.
+const imageUrls = [
+    "./assets/rock.webp",
+    "./assets/paper.webp",
+    "./assets/scissors.webp",
+    "./assets/question-mark.webp",
+    "./assets/gun-safe-left.webp",
+    "./assets/gun-safe-right.webp",
+    "./assets/gun-fired-left.webp",
+    "./assets/gun-fired-right.webp"
+];
+
+function preloadImages(urls) {
+    urls.forEach(url => {
+        const img = new Image();
+        img.src = url;
+    });
+}
+
+preloadImages(imageUrls);
+
 // Adding event listeners for each button available.
 document.querySelector(".human-left").addEventListener("click", () => changeHand(leftHand));
 document.querySelector(".human-right").addEventListener("click", () => changeHand(rightHand));
