@@ -36,11 +36,7 @@ It introduces **extra mechanics** and **gameplay twists**, drawing inspiration f
 ✅ Classic Rock, Paper, Scissors gameplay with a **Squid Game twist**  
 ✅ Interactive UI with dynamic **DOM manipulation**  
 ✅ Clean, responsive design  
-✅ Sound effects / animations (if applicable, you can mention specifics)  
+✅ Sound effects / animations
 ✅ Modular and readable JavaScript  
 ✅ Easy to extend with new features or game logic
-
----
-
-## 📂 Folder Structure
 
