@@ -33,10 +33,10 @@ It introduces **extra mechanics** and **gameplay twists**, drawing inspiration f
 
 ## 🎯 Key Features
 
-✅ Classic Rock, Paper, Scissors gameplay with a **Squid Game twist**  
-✅ Interactive UI with dynamic **DOM manipulation**  
-✅ Clean, responsive design  
-✅ Sound effects / animations
-✅ Modular and readable JavaScript  
+✅ Classic Rock, Paper, Scissors gameplay with a **Squid Game twist** <br>
+✅ Interactive UI with dynamic **DOM manipulation**  <br>
+✅ Clean, responsive design  <br>
+✅ Sound effects / animations <br>
+✅ Modular and readable JavaScript <br> 
 ✅ Easy to extend with new features or game logic
 
